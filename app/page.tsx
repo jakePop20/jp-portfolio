@@ -50,6 +50,7 @@ const projects = [
     image: "/e-commerce_screenshot.png",
     imageAlt: "Modern Sole headless storefront screenshot",
     imageFit: "contain" as const,
+    liveUrl: "https://modern-sole-store.vercel.app/",
   },
   {
     category: "03 / GOVERNMENT",

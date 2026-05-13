@@ -18,6 +18,8 @@ export type ProjectCard = {
    * tall website screenshots so nothing is cropped. Ignored when imageFrame is "mobile".
    */
   imageFit?: "cover" | "contain";
+  /** Public demo or production URL; opens in a new tab. */
+  liveUrl?: string;
 };
 
 const rowStagger = {
@@ -31,7 +33,7 @@ const rowStagger = {
 
 /** Shared by wide + mobile project thumbnails */
 const projectImageHoverOverlayClass =
-  "absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/50 via-primary/[0.08] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100";
+  "absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-t from-black/50 via-primary/[0.08] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:flex-row sm:gap-2";
 
 const projectImageFitHoverClass =
   "transition-[filter,transform] duration-500 ease-out saturate-[0.88] brightness-[0.98] contrast-[1.02] group-hover:saturate-100 group-hover:brightness-100";
@@ -143,6 +145,47 @@ export function AnimatedProjectRow({
     ? "w-full min-w-0 space-y-6 md:flex-1 md:space-y-8"
     : "w-full space-y-6 md:w-2/5";
 
+  const liveSiteLink =
+    project.liveUrl != null && project.liveUrl.length > 0 ? (
+      <p className="pt-1">
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex text-label-mono text-primary underline-offset-4 transition-colors hover:text-primary/85 hover:underline"
+        >
+          View live site
+        </a>
+      </p>
+    ) : null;
+
+  const imageHoverContent =
+    project.liveUrl != null && project.liveUrl.length > 0 ? (
+      <>
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-lg bg-white px-6 py-3 text-label-mono text-black transition-opacity hover:opacity-95"
+        >
+          View live site
+        </a>
+        <a
+          href="#contact"
+          className="rounded-lg border border-white/45 bg-black/25 px-6 py-3 text-label-mono text-white backdrop-blur-sm transition-colors hover:bg-black/40"
+        >
+          Discuss this project
+        </a>
+      </>
+    ) : (
+      <a
+        href="#contact"
+        className="rounded-lg bg-white px-6 py-3 text-label-mono text-black"
+      >
+        Discuss this project
+      </a>
+    );
+
   const imageBlock = (
     <div className={imageOuterClass}>
       <div className={imageInnerClass}>
@@ -157,14 +200,7 @@ export function AnimatedProjectRow({
               : "(max-width: 768px) 100vw, 60vw"
           }
         />
-        <div className={projectImageHoverOverlayClass}>
-          <a
-            href="#contact"
-            className="rounded-lg bg-white px-6 py-3 text-label-mono text-black"
-          >
-            Discuss this project
-          </a>
-        </div>
+        <div className={projectImageHoverOverlayClass}>{imageHoverContent}</div>
       </div>
     </div>
   );
@@ -190,6 +226,7 @@ export function AnimatedProjectRow({
           </li>
         ))}
       </ul>
+      {liveSiteLink}
     </div>
   );
 
@@ -227,14 +264,7 @@ export function AnimatedProjectRow({
                 : "(max-width: 768px) 100vw, 60vw"
             }
           />
-          <div className={projectImageHoverOverlayClass}>
-            <a
-              href="#contact"
-              className="rounded-lg bg-white px-6 py-3 text-label-mono text-black"
-            >
-              Discuss this project
-            </a>
-          </div>
+          <div className={projectImageHoverOverlayClass}>{imageHoverContent}</div>
         </div>
       </motion.div>
       <motion.div
@@ -261,6 +291,7 @@ export function AnimatedProjectRow({
             </li>
           ))}
         </ul>
+        {liveSiteLink}
       </motion.div>
     </motion.div>
   );
