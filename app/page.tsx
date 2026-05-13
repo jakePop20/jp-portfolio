@@ -37,7 +37,7 @@ const projects = [
     description:
       "Built a full-stack investment platform using React Native, .NET 8, Go, and PostgreSQL. Designed secure authentication and resilient backend pipelines.",
     tags: ["React Native", ".NET 8", "Go", "PostgreSQL", "GitHub Actions"],
-    image: "/poler_screenshot_1.jpeg",
+    image: "/poler_screenshot_1.jpg",
     imageAlt: "Poler project screenshot",
     imageFrame: "mobile" as const,
   },
