@@ -1,26 +1,168 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Material-style palette */
+  --color-inverse-on-surface: #2e3038;
+  --color-outline: #8c909f;
+  --color-outline-variant: #424754;
+  --color-surface: #10131a;
+  --color-on-primary: #002e6a;
+  --color-on-surface: #e1e2ec;
+  --color-on-primary-container: #00285d;
+  --color-on-primary-fixed: #001a42;
+  --color-primary-fixed: #d8e2ff;
+  --color-secondary-container: #0267b8;
+  --color-on-tertiary: #502400;
+  --color-primary: #3b82f6;
+  --color-surface-container-high: #272a31;
+  --color-on-surface-variant: #c2c6d6;
+  --color-tertiary-fixed-dim: #ffb786;
+  --color-on-secondary: #00315d;
+  --color-tertiary-container: #df7412;
+  --color-surface-bright: #363941;
+  --color-background: #0b0e15;
+  --color-primary-container: #1e3a8a;
+  --color-on-secondary-container: #d6e5ff;
+  --color-surface-variant: #32353c;
+  --color-tertiary: #ffb786;
+  --color-primary-fixed-dim: #adc6ff;
+  --color-on-secondary-fixed: #001c39;
+  --color-on-background: #e1e2ec;
+  --color-on-secondary-fixed-variant: #004883;
+  --color-surface-container-lowest: #0b0e15;
+  --color-on-primary-fixed-variant: #004395;
+  --color-on-tertiary-fixed: #311400;
+  --color-surface-container: #1d2027;
+  --color-on-error-container: #ffdad6;
+  --color-tertiary-fixed: #ffdcc6;
+  --color-surface-tint: #adc6ff;
+  --color-secondary-fixed-dim: #a4c9ff;
+  --color-on-tertiary-fixed-variant: #723600;
+  --color-surface-container-highest: #32353c;
+  --color-error: #ffb4ab;
+  --color-secondary-fixed: #d4e3ff;
+  --color-error-container: #93000a;
+  --color-secondary: #a4c9ff;
+  --color-inverse-primary: #005ac2;
+  --color-on-error: #690005;
+  --color-surface-container-low: #191b23;
+  --color-inverse-surface: #e1e2ec;
+  --color-on-tertiary-container: #461f00;
+  --color-surface-dim: #10131a;
+
+  --radius-DEFAULT: 0.5rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+  --spacing-gutter: 24px;
+  --spacing-unit: 4px;
+
+  --max-width-container: 1100px;
+
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  /* Anchor targets clear the fixed nav; safe-area avoids notch overlap on phones */
+  scroll-padding-top: calc(2rem + env(safe-area-inset-top, 0px));
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: inline-block;
+  direction: ltr;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga";
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.glow-card {
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.glow-card:hover {
+  box-shadow: 0 0 20px 2px rgba(59, 130, 246, 0.15);
+}
+
+.bg-mesh {
+  background-image: radial-gradient(#1d2027 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.hero-gradient {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(59, 130, 246, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+@utility text-display-lg {
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+@utility text-headline-lg {
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+@utility text-headline-md {
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+@utility text-body-md {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+@utility text-label-mono {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  font-weight: 500;
 }
