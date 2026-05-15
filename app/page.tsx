@@ -28,7 +28,7 @@ function IconLinkedIn({ className }: { className?: string }) {
   );
 }
 
-const HERO_PORTRAIT = "/face.jpg";
+const HERO_PORTRAIT = "/profile_pic.jpeg";
 
 const projects = [
   {
