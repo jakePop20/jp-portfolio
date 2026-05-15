@@ -63,6 +63,15 @@ const portraitShellClass =
 const heroGridClass =
   "mx-auto grid min-w-0 w-full max-w-container grid-cols-1 gap-x-12 gap-y-6 md:grid-cols-[1fr_minmax(0,400px)] md:items-start";
 
+/**
+ * Portrait image look — change the `brightness-*` value to taste:
+ * - `brightness-100` — no change (default photo)
+ * - `brightness-95` / `brightness-90` — slightly darker
+ * - `brightness-75` — noticeably darker
+ * - `brightness-[0.85]` — custom (0–1, e.g. 0.88 ≈ 88%)
+ */
+const PORTRAIT_IMAGE_CLASS = "object-cover brightness-[0.9]";
+
 export function AnimatedHero({
   portraitSrc,
   portraitAlt,
@@ -85,7 +94,7 @@ export function AnimatedHero({
         src={portraitSrc}
         alt={portraitAlt}
         fill
-        className="object-cover"
+        className={PORTRAIT_IMAGE_CLASS}
         sizes="(max-width: 768px) 100vw, 400px"
         priority
       />

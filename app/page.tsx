@@ -1,4 +1,5 @@
 import { CONTACT_EMAIL, contactMailtoHref } from "@/lib/contact";
+import { getHeroPortraitSrc } from "@/lib/hero-portrait";
 import { AnimatedHero } from "./components/animated-hero";
 import { AnimatedProjectRow } from "./components/animated-project-row";
 import { AnimatedProjectsIntro } from "./components/animated-projects-intro";
@@ -27,8 +28,6 @@ function IconLinkedIn({ className }: { className?: string }) {
     </svg>
   );
 }
-
-const HERO_PORTRAIT = "/profile_pic.jpeg";
 
 const projects = [
   {
@@ -97,7 +96,7 @@ export default function Home() {
         className="relative flex min-h-[100dvh] min-h-screen items-center bg-background px-margin-mobile pb-16 pt-24 hero-gradient md:px-margin-desktop md:pb-20 md:pt-32"
       >
         <AnimatedHero
-          portraitSrc={HERO_PORTRAIT}
+          portraitSrc={getHeroPortraitSrc()}
           portraitAlt="Jakub Popiolek — full-stack engineer"
           badgeText="Open to freelance & remote opportunities"
           name="Jakub Popiolek"
