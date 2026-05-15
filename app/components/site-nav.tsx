@@ -1,6 +1,5 @@
 "use client";
 
-import { RESUME_DOWNLOAD_FILENAME, RESUME_PDF_PATH } from "@/lib/resume";
 import { useEffect, useState } from "react";
 
 const SECTION_IDS = ["home", "projects", "skills", "contact"] as const;
@@ -101,7 +100,7 @@ export function SiteNav() {
         ))}
       </div>
 
-      <div className="flex shrink-0 items-center gap-2 md:gap-3">
+      <div className="flex shrink-0 items-center md:hidden">
         <button
           type="button"
           className="flex h-11 w-11 items-center justify-center rounded-lg border border-outline-variant/50 text-on-surface transition-colors hover:bg-surface-variant/40 md:hidden"
@@ -113,13 +112,6 @@ export function SiteNav() {
           <IconMenu open={menuOpen} />
         </button>
 
-        <a
-          href={RESUME_PDF_PATH}
-          download={RESUME_DOWNLOAD_FILENAME}
-          className="rounded-lg bg-primary px-3 py-2 text-label-mono text-white transition-all hover:opacity-90 active:scale-95 sm:px-4 md:px-6"
-        >
-          Resume
-        </a>
       </div>
 
       {menuOpen ? (

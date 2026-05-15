@@ -1,4 +1,4 @@
-import { RESUME_DOWNLOAD_FILENAME, RESUME_PDF_PATH } from "@/lib/resume";
+import { CONTACT_EMAIL, contactMailtoHref } from "@/lib/contact";
 import { AnimatedHero } from "./components/animated-hero";
 import { AnimatedProjectRow } from "./components/animated-project-row";
 import { AnimatedProjectsIntro } from "./components/animated-projects-intro";
@@ -102,6 +102,7 @@ export default function Home() {
           badgeText="Open to freelance & remote opportunities"
           name="Jakub Popiolek"
           role="Full Stack Developer"
+          timezone="CST"
           tagline="I build scalable web applications using React, Angular, .NET, and Spring Boot - from government systems to cloud-based platforms."
           actions={
             <>
@@ -184,10 +185,10 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center gap-6">
             <div className="flex flex-col items-center gap-2 text-center">
               <a
-                href="mailto:jakubpopiolek20@gmail.com"
+                href={contactMailtoHref()}
                 className="text-label-mono text-lg text-primary transition-colors hover:text-primary/80 hover:underline sm:text-xl"
               >
-                jakubpopiolek20@gmail.com
+                {CONTACT_EMAIL}
               </a>
             </div>
             <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-lg sm:flex-row sm:justify-center sm:gap-4">
@@ -210,13 +211,6 @@ export default function Home() {
                 LinkedIn
               </a>
             </div>
-            <a
-              href={RESUME_PDF_PATH}
-              download={RESUME_DOWNLOAD_FILENAME}
-              className="inline-flex w-full max-w-xs min-h-11 items-center justify-center rounded-lg border border-outline-variant px-6 py-4 text-label-mono text-on-surface transition-all hover:bg-surface-variant/50 sm:w-auto sm:max-w-none sm:px-10"
-            >
-              View my Resume
-            </a>
           </div>
         </div>
       </section>

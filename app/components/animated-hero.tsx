@@ -10,6 +10,7 @@ export type AnimatedHeroProps = {
   badgeText: string;
   name: string;
   role: string;
+  timezone?: string;
   tagline: string;
   actions: ReactNode;
 };
@@ -68,6 +69,7 @@ export function AnimatedHero({
   badgeText,
   name,
   role,
+  timezone,
   tagline,
   actions,
 }: AnimatedHeroProps) {
@@ -99,6 +101,9 @@ export function AnimatedHero({
             <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-primary" />
             <span className="min-w-0 break-words text-label-mono text-primary">{badgeText}</span>
           </div>
+          {timezone ? (
+            <p className="text-label-mono text-on-surface-variant">Timezone: {timezone}</p>
+          ) : null}
           <h1 className="text-4xl font-bold leading-tight tracking-tight text-on-surface sm:text-5xl md:text-[64px] md:leading-tight">
             <span className="text-primary">{name}</span> <br />
             {role}
@@ -108,7 +113,7 @@ export function AnimatedHero({
             {actions}
           </div>
         </div>
-        <div className={`${portraitShellClass} md:col-start-2 md:row-span-4 md:row-start-1`}>
+        <div className={`${portraitShellClass} md:col-start-2 md:row-span-5 md:row-start-1`}>
           {portraitContent}
         </div>
       </div>
@@ -128,6 +133,14 @@ export function AnimatedHero({
           <span className="min-w-0 break-words text-label-mono text-primary">{badgeText}</span>
         </div>
       </motion.div>
+      {timezone ? (
+        <motion.p
+          variants={fadeUp}
+          className="col-start-1 text-label-mono text-on-surface-variant"
+        >
+          Timezone: {timezone}
+        </motion.p>
+      ) : null}
       <motion.div variants={fadeUpBlur} className="col-start-1 min-w-0">
         <h1 className="text-4xl font-bold leading-tight tracking-tight text-on-surface sm:text-5xl md:text-[64px] md:leading-tight">
           <span className="text-primary">{name}</span> <br />
@@ -148,7 +161,7 @@ export function AnimatedHero({
       </motion.div>
       <motion.div
         variants={fadeUpBlur}
-        className={`${portraitShellClass} md:col-start-2 md:row-span-4 md:row-start-1 md:self-start`}
+        className={`${portraitShellClass} md:col-start-2 md:row-span-5 md:row-start-1 md:self-start`}
       >
         {portraitContent}
       </motion.div>
